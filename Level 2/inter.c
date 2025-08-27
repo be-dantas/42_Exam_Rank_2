@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 int main (int argc, char **argv)
 {
     int i = 0;
@@ -12,20 +14,22 @@ int main (int argc, char **argv)
 
     while (argv[1][i] != '\0')
     {
-        if (argv[2][x] == argv[1][i])
+        c = 0;
+        while (c < i && argv[1][c] != argv[1][i])
+            c++;
+
+        if (c == i)
         {
-            while (c <= i)
-            {
-                if (argv[1][c] != argv[1][i] && c < i)
-                    c++;
-                if (argv[1][c] == argv[1][i] && c < i)
-                    write 
-            }
-            
+            x = 0;
+            while (argv[2][x] != '\0' && argv[2][x] != argv[1][i])
+                x++;
+
+            if (argv[2][x] != '\0' && argv[2][x] == argv[1][i])
+                write(1, &argv[1][i], 1);
         }
-        else if (argv[2][x] != argv[1][i])
-            x++;
         i++;
     }
-    
+
+    write (1, "\n", 1);
+    return (0);
 }
