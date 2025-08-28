@@ -3,8 +3,6 @@
 int main (int argc, char **argv)
 {
     int i = 0;
-    int x = 0;
-    int c = 0;
 
     if (argc != 3)
     {
@@ -14,22 +12,20 @@ int main (int argc, char **argv)
 
     while (argv[1][i] != '\0')
     {
-        c = 0;
-        while (c < i && argv[1][c] != argv[1][i])
-            c++;
+        int x = 0;
+        while (x < i && argv[1][i] != argv[1][x])
+            x++;
 
-        if (c == i)
+        if (x == i)
         {
-            x = 0;
-            while (argv[2][x] != '\0' && argv[2][x] != argv[1][i])
-                x++;
-
-            if (argv[2][x] != '\0' && argv[2][x] == argv[1][i])
-                write(1, &argv[1][i], 1);
+            int j = 0;
+            while (argv[2][j] != '\0' && argv[1][i] != argv[2][j])
+                j++;
+            if (argv[2][j] != '\0' && argv[1][i] == argv[2][j])
+                write (1, &argv[1][i], 1);
         }
         i++;
     }
-
     write (1, "\n", 1);
     return (0);
 }
